@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Posto Saúde Municipal</title>
+<link href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="/files_index/style.css" rel="stylesheet">
+</head>
+<body>
+	<div th:insert="~{menu :: copy}"></div>
+
+	<div id="corpo" class="container-fluid bg-image d-flex align-items-end justify-content-around">
+		<div id="cartoes" class="row">
+			<div class="col me-5">
+				<div class="card">
+				  <img src="/files_index/img/pacientes.png" class="card-img-top img-fluid" alt="...">
+
+				  <div class="card-body">
+					<h5 class="card-title">Pacientes</h5>
+					<p class="card-text">Cadastre os pacientes e veja uma lista de todos os pacientes já inseridos</p>
+				  </div>
+				</div>
+			</div>
+
+			<div class="col me-5">
+				<div class="card">
+				  <img src="/files_index/img/medicos.png" class="card-img-top img-fluid" alt="...">
+
+				  <div class="card-body">
+					<h5 class="card-title">Médicos</h5>
+					<p class="card-text">Cadastre os médicos e veja uma lista de todos os médicos já inseridos</p>
+				  </div>
+				</div>
+			</div>
+
+			<div class="col">
+				<div class="card">
+				  <img src="/files_index/img/consultas.png" class="card-img-top img-fluid" alt="...">
+
+				  <div class="card-body">
+					<h5 class="card-title">Consultas</h5>
+					<p class="card-text">Agende as consultas e veja uma lista de todas as consultas já marcadas</p>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

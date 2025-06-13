@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Lista de Pacientes</title>
+<link href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="/files_exibir_pacientes/style.css" rel="stylesheet">
+</head>
+<body>
+	<div th:insert="~{menu :: copy}"></div>
+	
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col"> 
+				<div class="d-flex justify-content-between align-items-center mb-3">
+					<h1 class="">Lista dos Pacientes</h1>
+					<form method="post" action="exibir-pacientes">
+						<div class="input-group">
+						  <input type="text" class="form-control" name="cpf" placeholder="Procurar um paciente pelo CPF" id="inputCpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$">
+						  <input class="btn btn-outline-secondary" type="submit" value="Procurar">
+						  <a class="btn btn-outline-secondary" href="exibir-pacientes" role="button">Exibir todos</a>
+						</div>
+					</form>
+				</div>
+
+				<table class="table table-secondary">
+				  <thead>
+					<tr>
+					  <th scope="col">#</th>
+					  <th scope="col">Nome</th>
+					  <th scope="col">Sobrenome</th>
+					  <th scope="col">CPF</th>
+					  <th scope="col">Telefone</th>
+					  <th scope="col">CEP</th>
+					  <th scope="col">Editar</th>
+					  <th scope="col">Deletar</th>
+					</tr>
+				  </thead>
+				  <tbody>
+					<tr th:each="paciente, numIteracao : ${pacientes}">
+					  <th scope="row" th:text="${numIteracao.index + 1}">?</th>
+					  <td th:text="${paciente.nome}">?</td>
+					  <td th:text="${paciente.sobrenome}">?</td>
+					  <td th:text="${paciente.cpf.substring(0, 3)} + '.' + ${paciente.cpf.substring(3, 6)} + '.' + ${paciente.cpf.substring(6, 9)} + '-' + ${paciente.cpf.substring(9, 11)} ">?</td>
+					  <td th:text="'(' + ${paciente.numeroTelefone.substring(0, 2)} + ')' + ${paciente.numeroTelefone.substring(2, 6)} + '-' + ${paciente.numeroTelefone.substring(6)}">?</td>
+					  <td th:text="${paciente.endereco.cep.substring(0, 5)} + '-' + ${paciente.endereco.cep.substring(5, 8)}">?</td>
+					  <td><a class="btn btn-outline-info btn-sm" th:href="@{/editar-paciente(id=${paciente.id})}" role="button">Editar</a></td>
+					  <td><a class="btn btn-outline-danger btn-sm" th:href="@{/deletar-paciente(id=${paciente.id})}" role="button">Deletar</a></td>
+					</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
+<script src="/webjars/jquery-mask-plugin/1.14.16/dist/jquery.mask.min.js"></script>
+<script src="/files_cadastrar_paciente/script.js"></script>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

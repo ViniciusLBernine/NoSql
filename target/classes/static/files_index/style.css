@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+#corpo {
+	background-image: url(/files_index/img/saude.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100vh;
+}
+
+#cartoes {
+	margin-bottom: 80px;
+}
+
+.card {
+	max-width: 18rem;
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro Paciente</title>
+<link href="/webjars/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+<link href="/files_cadastrar_paciente/style.css" rel="stylesheet">
+</head>
+<body>
+	<div th:insert="~{menu :: copy}"></div>
+	
+	<div class="container flex-column my-5">
+		<div class="row justify-content-center">
+			<div class="col-5">
+				<h1 class="text-center mb-3">Cadastro do Paciente</h1>
+				<form method="post" action="cadastrar-paciente" id="formCadastro" th:object="${paciente}">
+				  <div class="mb-3">
+					<label class="form-label">Nome</label>
+					<input type="text" name="nome" class="form-control" id="inputNome" >
+					<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Sobrenome</label>
+					<input type="text" name="sobrenome" class="form-control" id="inputSobrenome">
+					<div th:if="${#fields.hasErrors('sobrenome')}" th:errors="*{sobrenome}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Número de telefone</label>
+					<input type="text" name="numeroTelefone" class="form-control" id="inputTelefone" pattern="\([0-9]{2}\)[0-9]{4}-[0-9]{4}$">
+					<div th:if="${#fields.hasErrors('numeroTelefone')}" th:errors="*{numeroTelefone}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">CPF</label>
+					<input type="text" name="cpf" class="form-control" id="inputCpf" pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}$">
+					<div th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Data de nascimento</label>
+					<input type="date" name="dataNascimento" class="form-control" id="inputDataNascimento" >
+					<div th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">CEP</label>
+					<input type="text" name="endereco.cep" class="form-control" id="inputCep" pattern="[0-9]{5}-[0-9]{3}" >
+					<div th:if="${#fields.hasErrors('endereco.cep')}" th:errors="*{endereco.cep}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Logradouro</label>
+					<input type="text" name="endereco.logradouro" class="form-control" id="inputLogradouro">
+					<div th:if="${#fields.hasErrors('endereco.logradouro')}" th:errors="*{endereco.logradouro}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Número</label>
+					<input type="text" name="endereco.numero" class="form-control" id="inputNumeroCasa">
+					<div th:if="${#fields.hasErrors('endereco.numero')}" th:errors="*{endereco.numero}" class="text-danger"></div>
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label">Bairro</label>
+					<input type="text" name="endereco.bairro" class="form-control" id="inputBairro">
+					<div th:if="${#fields.hasErrors('endereco.bairro')}" th:errors="*{endereco.bairro}" class="text-danger"></div>
+				  </div>
+				  <input class="btn btn-success" type="submit" value="Cadastrar">
+				</form>
+			</div>
+		</div>
+	</div>
+	
+<script src="/webjars/jquery/3.7.1/jquery.min.js"></script>
+<script src="/webjars/jquery-mask-plugin/1.14.16/dist/jquery.mask.min.js"></script>
+<script src="/files_cadastrar_paciente/script.js"></script>
+<script src="/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
